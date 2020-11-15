@@ -6,14 +6,16 @@ import org.openqa.selenium.WebDriver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-public abstract class Resources {
+public abstract class BaseClass {
 
     protected static WebDriver driver;
+    //saved so the calculator can close on demand
     protected static ConfigurableApplicationContext context;
 
-    //start the calculator for all tests
+    //start the calculator before all tests in one instance of genericTestCases runs
     @BeforeAll
     static void setup(){
         context = SpringApplication.run(CalculatorApplication.class);
     }
+
 }

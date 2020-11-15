@@ -9,4 +9,6 @@ public class chromeEnvironmentTest extends GenericTestCases {
         super(new ChromeDriver());
     }
 
+    //leaves space to be able to override testcases with chrome specific logic if needed.
+
 }

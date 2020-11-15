@@ -1,16 +1,11 @@
 package com.cicd.calculator.selenium.testCases;
 
 import com.cicd.calculator.selenium.testSetup.Teardown;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.*;
 
+import static com.cicd.calculator.selenium.testSetup.PageHandling.WebPages.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @Disabled("Abstract class")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -20,87 +15,68 @@ public abstract class GenericTestCases extends Teardown {
 
     @Test
     public void testTitle(){
-        driver.get("http://localhost:8080/add");
+        ADD.getWebPage();
         assertEquals("Calculator - ADD", driver.getTitle());
     }
 
     @Test
     public void testBottomLinkXpath(){
-        driver.get("http://localhost:8080/add");
-        WebElement bottomLink = driver.findElement(By.ByXPath.xpath("/html/body/div[3]/p/a"));
-        String bottomLinkHrefValue = bottomLink.getAttribute("href");
-        driver.get(bottomLinkHrefValue);
-        assertEquals(bottomLinkHrefValue, driver.getCurrentUrl());
+        ADD.getWebPage();
+        String bottomLinkHrefValue = extractAttribute(bottomLinkXpath, "href");
+        assertEquals(bottomLinkHrefValue, getPageAndURL(bottomLinkHrefValue));
     }
 
     @Test
     public void testAddFunction(){
-        driver.get("http://localhost:8080/add");
-        driver.findElement(By.id("firstValue")).sendKeys("5");
-        driver.findElement(By.id("secondValue")).sendKeys("2");
-        driver.findElement(By.cssSelector(".submit-btn")).click();
-        assertEquals(7, Integer.parseInt(driver.findElement(By.xpath("/html/body/div[2]/h3/p")).getText()));
+        ADD.getWebPage();
+        assertEquals(7, doPageSpecificMath(5, 2));
     }
 
     @Test
     public void testSubtractionLinkCSSSelector(){
-        driver.get("http://localhost:8080/add");
-        driver.findElement(By.cssSelector(".menu > ul:nth-child(1) > li:nth-child(2) > a:nth-child(1)")).click();
-        assertEquals("http://localhost:8080/subtract", driver.getCurrentUrl());
+        ADD.getWebPage();
+        assertEquals(SUBTRACT.url, clickLinkAndGetURL(subtractButtonCss));
     }
 
     @Test
     public void testSubFunction(){
-        driver.get("http://localhost:8080/subtract");
-        driver.findElement(By.id("firstValue")).sendKeys("3");
-        driver.findElement(By.id("secondValue")).sendKeys("5");
-        driver.findElement(By.cssSelector(".submit-btn")).click();
-        assertEquals(-2, Integer.parseInt(driver.findElement(By.xpath("/html/body/div[2]/h3/p")).getText()));
+        SUBTRACT.getWebPage();
+        assertEquals(-2, doPageSpecificMath(3, 5));
     }
 
     @Test
     public void testMultiplicationLinkXPath(){
-        driver.get("http://localhost:8080/add");
-        driver.findElement(By.xpath("/html/body/div[1]/div[2]/ul/li[3]/a")).click();
-        assertEquals("http://localhost:8080/multiply", driver.getCurrentUrl());
+        SUBTRACT.getWebPage();
+        assertEquals(MULTIPLY.url, clickLinkAndGetURL(multiplyButtonXpath));
     }
 
     @Test
     public void testMultiplyFunction(){
-        driver.get("http://localhost:8080/multiply");
-        driver.findElement(By.id("firstValue")).sendKeys("4");
-        driver.findElement(By.id("secondValue")).sendKeys("4");
-        driver.findElement(By.cssSelector(".submit-btn")).click();
-        assertEquals(16, Integer.parseInt(driver.findElement(By.xpath("/html/body/div[2]/h3/p")).getText()));
+        MULTIPLY.getWebPage();
+        assertEquals(16, doPageSpecificMath(4, 4));
     }
 
     @Test
     public void testDivisionLinkXPath(){
-        driver.get("http://localhost:8080/add");
-        driver.findElement(By.xpath("/html/body/div[1]/div[2]/ul/li[4]/a")).click();
-        assertEquals("http://localhost:8080/divide", driver.getCurrentUrl());
+        MULTIPLY.getWebPage();
+        assertEquals(DIVIDE.url, clickLinkAndGetURL(divideButtonXpath));
     }
 
     @Test
     public void testDivisionFunction(){
-        driver.get("http://localhost:8080/divide");
-        driver.findElement(By.id("firstValue")).sendKeys("10");
-        driver.findElement(By.id("secondValue")).sendKeys("4");
-        driver.findElement(By.cssSelector(".submit-btn")).click();
-        assertEquals(2.5, Double.parseDouble(driver.findElement(By.xpath("/html/body/div[2]/h3/p")).getText()));
+        DIVIDE.getWebPage();
+        assertEquals(2.5, doPageSpecificMath(10, 4));
     }
 
     @Test
     public void testQuoteLinkXPath(){
-        driver.get("http://localhost:8080/add");
-        driver.findElement(By.xpath("/html/body/div[1]/div[2]/ul/li[5]/a")).click();
-        assertEquals("http://localhost:8080/quote", driver.getCurrentUrl());
+        DIVIDE.getWebPage();
+        assertEquals(QUOTE.url, clickLinkAndGetURL(quoteButtonXpath));
     }
 
     @RepeatedTest(3)
     public void testQuoteFunction(){
-        driver.get("http://localhost:8080/quote");
-        String quote = driver.findElement(By.xpath("/html/body/div[2]/h3/p")).getText();
+        String quote = getQuote();
         assertAll(()->assertNotNull(quote), ()->assertFalse(quote.isEmpty()));
     }
 
