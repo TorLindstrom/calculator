@@ -1,11 +1,13 @@
 package com.cicd.calculator.selenium.testSetup;
 
-import org.springframework.test.context.event.annotation.AfterTestClass;
+import org.junit.jupiter.api.AfterAll;
 
 public abstract class Teardown extends HelperMethods{
 
-    //forces the test classes to deal with closing their webDriver
-    @AfterTestClass
-    public abstract void teardownClass();
+    @AfterAll
+    public static void teardown(){
+        driver.quit();
+        context.close();
+    };
 
 }

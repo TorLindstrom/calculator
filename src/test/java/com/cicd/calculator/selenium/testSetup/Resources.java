@@ -3,20 +3,17 @@ package com.cicd.calculator.selenium.testSetup;
 import com.cicd.calculator.CalculatorApplication;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
-import org.springframework.test.context.event.annotation.BeforeTestClass;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 public abstract class Resources {
 
-    public static WebDriver driver;
+    protected static WebDriver driver;
+    protected static ConfigurableApplicationContext context;
 
     //start the calculator for all tests
     @BeforeAll
     static void setup(){
-        CalculatorApplication.main(new String[]{});
+        context = SpringApplication.run(CalculatorApplication.class);
     }
-
-    //forces the test classes to deal with starting their webDriver
-    @BeforeTestClass
-    abstract public void setupClass();
-
 }
