@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CalculatorApplication {
 
-    //Jenkins test commit message 2
+    //Jenkins test commit message 3
     public static void main(String[] args) {
         SpringApplication.run(CalculatorApplication.class, args);
     }
