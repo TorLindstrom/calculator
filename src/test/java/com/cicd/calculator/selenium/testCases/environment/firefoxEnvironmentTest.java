@@ -4,7 +4,7 @@ import com.cicd.calculator.selenium.testCases.GenericTestCases;
 import org.junit.jupiter.api.Disabled;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-@Disabled
+//@Disabled
 public class firefoxEnvironmentTest extends GenericTestCases {
 
     protected firefoxEnvironmentTest() {
