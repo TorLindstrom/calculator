@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
+//@Disabled
 class InsprirationTest {
 
     static Inspriration inspriration;
