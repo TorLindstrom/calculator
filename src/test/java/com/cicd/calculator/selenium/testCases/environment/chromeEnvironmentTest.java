@@ -4,7 +4,7 @@ import com.cicd.calculator.selenium.testCases.GenericTestCases;
 import org.junit.jupiter.api.Disabled;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-@Disabled
+//@Disabled
 public class chromeEnvironmentTest extends GenericTestCases {
 
     protected chromeEnvironmentTest() {
