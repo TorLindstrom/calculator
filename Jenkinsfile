@@ -3,11 +3,16 @@ pipeline {
     tools{
         maven 'M3'
     }
+    options{
+        timestamps ()
+    }
     stages {
         stage("build") {
             steps {
                 echo 'building the application...'
-                sh "mvn -B verify"
+                sh "mvn -B -version"
+                sh "mvn -B compile"
+                stash includes: '**/target/*.class', name: 'class'
             }
         }
 
@@ -17,6 +22,7 @@ pipeline {
             }
             steps {
                 echo 'testing the application...'
+                unstash 'class'
                 sh "mvn integration-test"
             }
         }
