@@ -7,11 +7,14 @@ pipeline {
         stage("build") {
             steps {
                 echo 'building the application...'
-                sh "mvn -B verify clean"
+                sh "mvn -B verify"
             }
         }
 
         stage("test") {
+            agent {
+                label 'CICD'
+            }
             steps {
                 echo 'testing the application...'
                 sh "mvn integration-test"
