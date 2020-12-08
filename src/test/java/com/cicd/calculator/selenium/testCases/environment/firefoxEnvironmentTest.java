@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class firefoxEnvironmentTest extends GenericTestCases {
 
     protected firefoxEnvironmentTest() {
-        super(new FirefoxDriver());
+        super(new FirefoxDriver(), "", "");
     }
 
     //leaves space to be able to override testcases with firefox specific logic if needed.
