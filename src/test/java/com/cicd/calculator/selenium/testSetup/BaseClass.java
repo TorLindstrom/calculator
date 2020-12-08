@@ -15,8 +15,8 @@ public abstract class BaseClass {
     //start the calculator before all tests in one instance of genericTestCases runs
     @BeforeAll
     static void setup(){
-        System.out.println(System.getProperty("webdriver.chrome.driver"));
-        System.out.println(System.getProperties());
+        System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\bin");
+        System.setProperty("webdriver.gecko.driver", "C:\\WebDriver\\bin");
         context = SpringApplication.run(CalculatorApplication.class);
     }
 

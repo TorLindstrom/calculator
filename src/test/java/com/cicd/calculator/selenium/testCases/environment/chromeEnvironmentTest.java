@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class chromeEnvironmentTest extends GenericTestCases {
 
     protected chromeEnvironmentTest() {
-        super(new ChromeDriver());
+        super(new ChromeDriver(), "", "");
     }
 
     //leaves space to be able to override testcases with chrome specific logic if needed.

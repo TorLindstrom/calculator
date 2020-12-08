@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class GenericTestCases extends Teardown {
 
-    protected GenericTestCases(WebDriver webDriver) {driver = webDriver;}
+    protected GenericTestCases(WebDriver webDriver, String property, String path) {driver = webDriver;}
 
     @Test
     public void testTitle(){
