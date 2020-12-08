@@ -1,5 +1,10 @@
 pipeline {
-    agent any 
+    environment {
+        PATH = "C:\\WINDOWS\\SYSTEM32"
+    }
+    agent {
+        label 'CICD'
+    } 
     tools{
         maven 'M3'
     }
@@ -10,20 +15,20 @@ pipeline {
         stage("build") {
             steps {
                 echo 'building the application...'
-                sh "mvn -B -version"
-                sh "mvn -B compile"
-                stash includes: '**/target/*.class', name: 'class'
+                sh "mvn -version"
+                sh "mvn clean compile"
+                //stash includes: '**/target/*.class', name: 'class'
             }
         }
 
         stage("test") {
-            agent {
+            /*agent {
                 label 'CICD'
-            }
+            }*/
             steps {
                 echo 'testing the application...'
-                unstash 'class'
-                sh "mvn integration-test"
+                //unstash 'class'
+                sh "mvn test"
             }
         }
         
