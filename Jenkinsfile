@@ -15,8 +15,8 @@ pipeline {
         stage("build") {
             steps {
                 echo 'building the application...'
-                sh "mvn -version"
-                sh "mvn clean compile"
+                bat "mvn -version"
+                bat "mvn clean compile"
                 //stash includes: '**/target/*.class', name: 'class'
             }
         }
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo 'testing the application...'
                 //unstash 'class'
-                sh "mvn test"
+                bat "mvn test"
             }
         }
         
