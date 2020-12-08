@@ -7,6 +7,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 //@Disabled
 public class firefoxEnvironmentTest extends GenericTestCases {
 
+    static{
+        System.setProperty("webdriver.gecko.driver", "C:\\WebDriver\\bin\\geckodriver.exe");
+    }
+
     protected firefoxEnvironmentTest() {
         super(new FirefoxDriver(), "", "");
     }

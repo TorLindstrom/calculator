@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public abstract class GenericTestCases extends Teardown {
 
     protected GenericTestCases(WebDriver webDriver, String property, String path) {
-        System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\bin\\chromedriver.exe");
-        System.setProperty("webdriver.gecko.driver", "C:\\WebDriver\\bin\\geckodriver.exe");
+
+
         driver = webDriver;
     }
 
