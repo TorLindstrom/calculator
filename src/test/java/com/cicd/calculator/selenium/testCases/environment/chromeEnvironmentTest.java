@@ -1,7 +1,6 @@
 package com.cicd.calculator.selenium.testCases.environment;
 
 import com.cicd.calculator.selenium.testCases.GenericTestCases;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -14,7 +13,7 @@ public class chromeEnvironmentTest extends GenericTestCases {
     }
 
     protected chromeEnvironmentTest() {
-        super(new ChromeDriver(), "", "");
+        super(new ChromeDriver());
     }
 
     //leaves space to be able to override testcases with chrome specific logic if needed.

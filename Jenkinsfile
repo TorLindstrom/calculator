@@ -6,7 +6,7 @@ pipeline {
         label 'CICD'
     } 
     tools{
-        maven 'M3'
+        maven 'Maven Computer'
     }
     options{
         timestamps ()
@@ -35,6 +35,7 @@ pipeline {
         stage("deploy") {
             steps{
                 echo 'deploying the application...'
+                bat "mvn package"
             }
         }
     }
