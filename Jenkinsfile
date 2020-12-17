@@ -1,9 +1,9 @@
 pipeline {
-
-    agent any
-
     environment {
         PATH = "C:\\WINDOWS\\SYSTEM32"
+    }
+    agent {
+        label 'windows'
     }
     tools{
         maven 'Maven Computer'
