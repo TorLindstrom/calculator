@@ -2,9 +2,6 @@ pipeline {
     environment {
         PATH = "C:\\WINDOWS\\SYSTEM32"
     }
-    agent {
-        label 'CICD'
-    } 
     tools{
         maven 'Maven Computer'
     }
@@ -22,9 +19,6 @@ pipeline {
         }
 
         stage("test") {
-            /*agent {
-                label 'CICD'
-            }*/
             steps {
                 echo 'testing the application...'
                 //unstash 'class'
