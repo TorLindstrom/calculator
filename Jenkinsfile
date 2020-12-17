@@ -1,5 +1,5 @@
 pipeline {
-    
+
     agent any
 
     environment {
@@ -15,8 +15,8 @@ pipeline {
         stage("build") {
             steps {
                 echo 'building the application...'
-                bat "mvn -version"
-                bat "mvn clean compile"
+                sh "mvn -version"
+                //bat "mvn clean compile"
                 //stash includes: '**/target/*.class', name: 'class'
             }
         }
@@ -25,22 +25,22 @@ pipeline {
             steps {
                 echo 'testing the application...'
                 //unstash 'class'
-                bat "mvn test"
+                //bat "mvn test"
             }
         }
         
         stage("deploy") {
             steps{
                 echo 'deploying the application...'
-                bat "mvn package"
+                //bat "mvn package"
             }
         }
     }
     post {
         always {
             echo 'This will always run'
-            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-            junit '**/target/surefire-reports/TEST-*.xml'
+            //archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+            //junit '**/target/surefire-reports/TEST-*.xml'
         }
         success {
             echo 'This will run only if successful'
