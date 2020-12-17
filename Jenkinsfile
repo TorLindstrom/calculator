@@ -15,7 +15,7 @@ pipeline {
         stage("build") {
             steps {
                 echo 'building the application...'
-                sh "mvn -version"
+                bat "mvn -version"
                 //bat "mvn clean compile"
                 //stash includes: '**/target/*.class', name: 'class'
             }
