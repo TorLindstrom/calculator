@@ -1,7 +1,7 @@
 pipeline {
-    agent {
-        any
-    }
+    
+    agent any
+
     environment {
         PATH = "C:\\WINDOWS\\SYSTEM32"
     }
